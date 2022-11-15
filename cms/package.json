@@ -1,0 +1,32 @@
+{
+  "name": "frisco-wave--ecommerce-cms",
+  "private": true,
+  "version": "1.0.0",
+  "license": "UNLICENSED",
+  "main": "package.json",
+  "scripts": {
+    "start": "sanity start",
+    "build": "sanity build"
+  },
+  "dependencies": {
+    "@sanity/base": "^2.35.0",
+    "@sanity/core": "^2.35.0",
+    "@sanity/default-layout": "^2.35.0",
+    "@sanity/default-login": "^2.35.0",
+    "@sanity/desk-tool": "^2.35.1",
+    "@sanity/vision": "^2.35.0",
+    "prop-types": "^15.8.1",
+    "react": "17.0.0",
+    "react-dom": "17.0.0",
+    "styled-components": "^5.3.6"
+  },
+  "devDependencies": {
+    "@sanity/eslint-config-studio": "^2.0.1",
+    "eslint": "^8.27.0"
+  },
+  "keywords": [
+    "sanity",
+    "cms",
+    "ecommerce"
+  ]
+}

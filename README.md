@@ -1,1 +1,1 @@
-# frisco-wave
+# Frisco Wave - E-Commerce App

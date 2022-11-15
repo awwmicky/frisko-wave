@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "sourceMap": true,
+    "paths": {
+      // "@/ui/*": ["./components/*", "./components"],
+      // "@/ft/*": ["./features/*", "./features"],
+      "@/assets/*": ["./assets/*", "./assets"],
+      "@/components/*": ["./components/*", "./components"],
+      "@/utils/*": ["./utils/*", "./utils"],
+      // "@/routes": ["./src/routes/*", "./src/routes"],
+      // "@/features/*": ["./src/features/*", "./src/features"],
+      // "@/services/*": ["./src/services/*", "./src/services"],
+      "@/*": ["./*", "./src/*"],
+    }
+  },
+  // "include": ["src"],
+  // "exclude": ["dist", "node_modules"]
+}
