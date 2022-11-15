@@ -17,11 +17,15 @@ const globalStyle = ({ addBase }) => {
 	})
 }
 
+const testStyle = ({ addComponents }) => {
+	addComponents({
+		'.s1, .s2, .s2 > *, .s3, .s3 *': { 'boxShadow': 'inset 0 0 5px silver' },
+		'.t1, .t2, .t2 > *, .t3, .t3 *': { 'transition': '0.3s linear' },
+	})
+}
+
 const customTheme = {
 	container: {
-		// screens: {
-		// 	DEFAULT: '90%',
-		// },
 		padding: {
 			DEFAULT: '1.25em',
 			'2xl': '0',
@@ -39,6 +43,7 @@ module.exports = withMT({
     extend: {},
   },
   plugins: [
-    plugin(globalStyle)
+    plugin(globalStyle),
+		plugin(testStyle),
   ],
 })

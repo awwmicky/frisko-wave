@@ -6,5 +6,5 @@ const HomePage = () => (
       <Typography variant="h1">Home Page</Typography>
     </Layer>
 )
- 
+
 export default HomePage

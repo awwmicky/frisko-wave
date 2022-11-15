@@ -1,4 +1,5 @@
 import { Children } from 'react'
+import { Typography } from '@material-tailwind/react'
 import { InfoIcon, TechIcon } from '@/components/blocks'
 import { Layer } from '../Layer'
 
@@ -26,7 +27,7 @@ const Footer = () => (
 					<b className="text-center sm:text-right">For more info</b>
 					<div className="flex gap-2 place-content-center sm:place-content-end">
 						{ Children.toArray(content.resource.map((item) => (
-							<a title={ item.title } href={ item.link }>
+							<a title={ item.title } href={ item.link } className="relative h-full flex place-items-center after:absolute after:top-[110%] after:block after:w-full after:border-b-4 hover:after:border-b-black active:after:border-b-blue-gray-200 after:border-b-transparent">
 								<item.icon />
 							</a>
 						))) }
@@ -36,14 +37,16 @@ const Footer = () => (
 					<b className="text-center sm:text-left">Technologies used</b>
 					<div className="flex gap-2 place-items-center place-content-center sm:place-content-start">
 						{ Children.toArray(content.technologies.map((item) => (
-							<a title={ item.title } href={ item.link }>
+							<a title={ item.title } href={ item.link } className="relative h-full flex place-items-center after:absolute after:top-[110%] after:block after:w-full after:border-b-4 hover:after:border-b-black active:after:border-b-blue-gray-200 after:border-b-transparent">
 								<item.icon />
 							</a>
 						))) }
 					</div>
 				</div>
 			</div>
-			<code className="block text-center">{ content.name }</code>
+			<Typography variant="small">
+				<code className="block text-center">{ content.name }</code>
+			</Typography>
     </Layer>
   </footer>
 )
