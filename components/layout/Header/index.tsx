@@ -31,7 +31,7 @@ const Header = () => (
 
 const NavBar = () => {
 	const activeRoute = '/' + useRouter().pathname.split('/')[1]
-	const activePage = (path="") => activeRoute === path ? 'font-bold text-red-500 underline underline-offset-4' : 'font-bold'
+	const activePage = (path="") => activeRoute === path ? 'font-bold text-red-500 underline underline-offset-4' : 'font-bold text-gray-600'
 
 	return (
 		<div className="flex gap-2">

@@ -4,8 +4,8 @@ interface IPLayer extends PropsWithChildren {
 	className?: string
 }
 
-const Layer: FC<IPLayer> = ({ children, className }) => (
-	<div className={`container mx-auto ${ className || "" }`}>
+const Layer: FC<IPLayer> = ({ children, className="" }) => (
+	<div className={`container mx-auto ${ className }`}>
 		{ children }
 	</div>
 )
