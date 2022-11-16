@@ -1,10 +1,12 @@
-import { Typography } from '@material-tailwind/react'
 import { Layer } from '@/components/layout'
+import * as Home from '@/containers/home'
 
 const HomePage = () => (
-    <Layer>
-      <Typography variant="h1">Home Page</Typography>
-    </Layer>
+	<Layer className="my-10 flex flex-col gap-20">
+		<Home.HeroBanner />
+		<Home.ProductList />
+		<Home.FooterBanner />
+	</Layer>
 )
 
 export default HomePage
