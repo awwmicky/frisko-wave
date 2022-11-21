@@ -1,43 +1,42 @@
+import NextImage from 'next/image'
 import NextLink from 'next/link'
 import { Typography, Button } from '@material-tailwind/react'
+import { heroBanner } from '@/src/constants'
+import { PATHS_ROOT } from '@/src/routes'
 
-const content = {
-	smallText: 'Boast Immortal 1000D',
-	midText: 'Wireless',
-	largeText1: 'Headphone',
-	btnText: 'Shop wireless headphone',
-	description: `\
-	The game begins here. With Immortal 1000D\
-	gaming headphones, don't just play the\
-	game - feel it, live it, and own it. Level up\
-	your audio game with 7.1 Channel.\
-	`,
-	image: '/',
-	image_alt: 'bi-1000d',
+const sx = {
+	banner: 'relative bg-gray-300 rounded-xl p-8 md:pt-20 grid gap-4 grid-cols-6 grid-rows-1',
+	box1: {
+		wrapper: 'col-span-full',
+		text2: 'font-bold',
+		span2: 'inline-block !text-white uppercase text-shadow-sm translate-x-[-0.125ch] md:block md:text-8xl',
+	},
+	image: 'col-span-full sm:col-start-2 sm:col-end-[-2] md:absolute md:col-start-3 md:col-end-[-3] md:scale-150 md:translate-y-2/3 lg:translate-y-1/3 xl:scale-100 xl:translate-y-10 2xl:translate-y-0',
+	link: 'z-[1] col-span-full place-self-center [&>*]:capitalize md:row-start-[-1] md:row-end-[-1] md:place-self-start',
+	description: 'col-span-full text-center md:text-left md:col-start-[-3] md:col-end-[-1] md:row-start-[-1] md:row-end-[-1] place-self-start',
 }
 
 const HeroBanner = () => {
 	return (
-		<div className="relative bg-gray-300 rounded-xl p-8 pt-20 grid gap-4 grid-cols-3 grid-rows-1">
-			<div className="col-span-full row-span-1">
-				<Typography variant="lead">{ content.smallText }</Typography>
-				<Typography variant="h3" className="text-5xl font-bold">{ content.midText }</Typography>
-				<Typography variant="h1" className="!text-white text-9xl font-bold uppercase text-shadow-sm translate-x-[-0.125ch]">
-					{ content.largeText1 }
+		<div className={`${ sx.banner }`}>
+			<div className={`${ sx.box1.wrapper }`}>
+				<Typography variant="paragraph">{ heroBanner.smallText }</Typography>
+				<Typography variant="h1" className={`${ sx.box1.text2 }`}>
+					<span>{ heroBanner.midText }</span>{' '}
+					<span className={`${ sx.box1.span2 }`}>{ heroBanner.largeText1 }</span>
 				</Typography>
 			</div>
 
-			<img src={ content.image } alt={ content.image_alt } className="absolute col-start-2 col-end-3 row-start-1 row-end-2" />
+			<NextImage src={ heroBanner.image } alt={ heroBanner.image_alt } className={`${ sx.image }`} />
 
-			<NextLink passHref href={ '/product/1' } className="row-start-[-1] row-end-[-1] place-self-start">
-				<Button color="red" className="capitalize">{ content.btnText }</Button>
+			<NextLink passHref href={ `${ PATHS_ROOT.shop.path }/${ heroBanner.id }` } className={`${ sx.link }`}>
+				<Button color="red">{ heroBanner.btnText }</Button>
 			</NextLink>
 
-			<div className="col-start-[-2] col-end-[-1] row-start-[-1] row-end-[-1] place-self-start">
-				<Typography variant="paragraph">{ content.description }</Typography>
-			</div>
+			<Typography variant="paragraph" className={`${ sx.description }`}>{ heroBanner.description }</Typography>
 		</div>
 	)
 }
 
 export { HeroBanner }
+// TODO: set data here

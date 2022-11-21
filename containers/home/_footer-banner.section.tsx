@@ -1,45 +1,50 @@
+import NextImage from 'next/image'
 import NextLink from 'next/link'
 import { Typography, Button } from '@material-tailwind/react'
+import { footerBanner } from '@/src/constants'
+import { PATHS_ROOT } from '@/src/routes'
 
-const content = {
-	salesDiscount: '20% OFF',
-	salesTime: '15 Nov - 7 Dec',
-	largeText1: 'Fine',
-	largeText2: 'Smile',
-	image: '/',
-	image_alt: 'br-451',
-	smallText: 'Boast Rockerz 451',
-	midText: 'Summer Sale',
-	description: `\
-	company that's grown from 270 to 480\
-	employees in the last 12 months.
-	`,
-	btnText: 'Shop Now',
+const sx = {
+	banner: 'relative bg-red-500 rounded-xl p-8 md:pt-20 grid gap-4 grid-cols-6',
+	box1: {
+		wrapper: 'col-span-full flex gap-2 md:flex-col flex-wrap md:flex-nowrap md:col-span-2',
+		text2: 'basis-full order-[-1] md:order-2 !text-white md:text-7xl font-bold uppercase text-shadow-md [&>*]:inline-block',
+		text3: 'md:order-3',
+	},
+	image: 'col-span-full sm:col-start-2 sm:col-end-[-2] md:col-start-3 md:col-end-[-3] md:scale-150 lg:absolute xl:scale-100 2xl:translate-y-[-20%]',
+	box2: {
+		wrapper: 'col-span-full flex flex-col text-center md:text-left md:col-start-[-3] md:col-end-[-1]',
+		text2: 'font-bold md:text-5xl md:translate-x-[-0.075ch]',
+		description: 'mb-4',
+		link: 'z-[1] mt-auto [&>*]:text-red-500 [&>*]:capitalize',
+	},
 }
 
 const FooterBanner = () => {
 	return (
-		<div className="bg-red-500 rounded-xl p-8 pt-20 grid gap-4 grid-cols-3 grid-rows-1">
-			<div className="col-start-1 col-end-2 flex flex-col gap-2">
-				<Typography variant="small" color="white">{ content.salesDiscount }</Typography>
-				<Typography variant="h2" className="!text-white text-7xl leading-[1] font-bold uppercase text-shadow-md">
-					<span className="block translate-x-[-0.1ch]">{ content.largeText1 }</span>
-					<span className="block translate-x-[-0.05ch]">{ content.largeText2 }</span>
+		<div className={`${ sx.banner }`}>
+			<div className={`${ sx.box1.wrapper }`}>
+				<Typography variant="small" color="white">{ footerBanner.salesDiscount }</Typography>
+				<Typography variant="h2" className={`${ sx.box1.text2 }`}>
+					<span className="translate-x-[-0.1ch]">{ footerBanner.largeText1 }</span>{' '}
+					<span className="translate-x-[-0.05ch]">{ footerBanner.largeText2 }</span>
 				</Typography>
-				<Typography variant="small" color="white">{ content.salesTime }</Typography>
+				<Typography variant="small" color="white" className={`${ sx.box1.text3 }`}>{ footerBanner.salesTime }</Typography>
 			</div>
 
-			<img src={ content.image } alt={ content.image_alt } className="col-start-2 col-end-3" />
+			<NextImage
+				src={ footerBanner.image }
+				alt={ footerBanner.image_alt }
+				className={`${ sx.image }`}
+			/>
 
-			<div className="col-start-[-2] col-end-[-1] flex flex-col">
-				<Typography variant="small" color="white">{ content.smallText }</Typography>
-				<Typography variant="h2" color="white" className="text-5xl font-bold">{ content.midText }</Typography>
-				<Typography variant="paragraph" color="white" className="mb-4">{ content.description }</Typography>
+			<div className={`${ sx.box2.wrapper }`}>
+				<Typography variant="small" color="white">{ footerBanner.smallText }</Typography>
+				<Typography variant="h2" color="white" className={`${ sx.box2.text2 }`}>{ footerBanner.midText }</Typography>
+				<Typography variant="paragraph" color="white" className={`${ sx.box2.description }`}>{ footerBanner.description }</Typography>
 
-				<NextLink passHref href={ '/product/1' } className="mt-auto">
-					<Button color="white" className="text-red-500 capitalize">
-						{ content.btnText }
-					</Button>
+				<NextLink passHref href={ `${ PATHS_ROOT.shop.path }/${ footerBanner.id }` } className={`${ sx.box2.link }`}>
+					<Button color="white">{ footerBanner.btnText }</Button>
 				</NextLink>
 			</div>
 		</div>
@@ -47,3 +52,4 @@ const FooterBanner = () => {
 }
 
 export { FooterBanner }
+// TODO: set data here
