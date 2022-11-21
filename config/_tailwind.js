@@ -2,15 +2,31 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 
 const globalStyle = ({ addBase }) => {
 	addBase({
-		'html, body, #__next': {
+		'html, body': {
 			height: '100%',
 		},
 		'#__next': {
+			'minHeight': '100%',
 			display: 'flex',
 			'flexDirection': 'column',
 		},
 		'main': {
 			flex: '1 1 auto',
+		},
+		/*  */
+		'input[type=number],\
+		input::-webkit-outer-spin-button,\
+		input::-webkit-inner-spin-button': {
+			'-moz-appearance': 'textfield',
+			'-webkit-appearance': 'none',
+			'margin': 0,
+		},
+		/*  */
+		'input.border-t-transparent:focus': {
+			'border-top-color': 'initial !important',
+		},
+		'input ~ label::before': {
+			display: 'none !important',
 		},
 	})
 }
@@ -66,14 +82,7 @@ const customTheme = {
 			'2xl': '0',
 		},
 	},
-	extend: {
-		fontSize: {
-			'9xl': [
-				'6rem',
-				{ lineHeight: '1' }
-			]
-		},
-	},
+	extend: { },
 }
 
 module.exports = {
