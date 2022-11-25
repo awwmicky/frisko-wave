@@ -1,8 +1,14 @@
-import NextImage from 'next/image'
+// import NextImage from 'next/image'
 import NextLink from 'next/link'
+import { FC } from 'react'
 import { Typography, Button } from '@material-tailwind/react'
-import { heroBanner } from '@/src/constants'
+import type { IBanner } from '@/src/@types'
+import { urlSrc } from '@/src/lib'
 import { PATHS_ROOT } from '@/src/routes'
+
+interface IPHeroBanner {
+	product: Omit<IBanner, 'name' | 'mdText' | 'salesDiscount' | 'salesTime'>
+}
 
 const sx = {
 	banner: 'relative bg-gray-300 rounded-xl p-8 md:pt-20 grid gap-4 grid-cols-6 grid-rows-1',
@@ -16,27 +22,24 @@ const sx = {
 	description: 'col-span-full text-center md:text-left md:col-start-[-3] md:col-end-[-1] md:row-start-[-1] md:row-end-[-1] place-self-start',
 }
 
-const HeroBanner = () => {
-	return (
-		<div className={`${ sx.banner }`}>
-			<div className={`${ sx.box1.wrapper }`}>
-				<Typography variant="paragraph">{ heroBanner.smallText }</Typography>
-				<Typography variant="h1" className={`${ sx.box1.text2 }`}>
-					<span>{ heroBanner.midText }</span>{' '}
-					<span className={`${ sx.box1.span2 }`}>{ heroBanner.largeText1 }</span>
-				</Typography>
-			</div>
-
-			<NextImage src={ heroBanner.image } alt={ heroBanner.image_alt } className={`${ sx.image }`} />
-
-			<NextLink passHref href={ `${ PATHS_ROOT.shop.path }/${ heroBanner.id }` } className={`${ sx.link }`}>
-				<Button color="red">{ heroBanner.btnText }</Button>
-			</NextLink>
-
-			<Typography variant="paragraph" className={`${ sx.description }`}>{ heroBanner.description }</Typography>
+const HeroBanner: FC<IPHeroBanner> = ({ product }) => (
+	<div className={`${ sx.banner }`}>
+		<div className={`${ sx.box1.wrapper }`}>
+			<Typography variant="paragraph">{ product.smText }</Typography>
+			<Typography variant="h1" className={`${ sx.box1.text2 }`}>
+				<span>{ product.lgText1 }</span>{' '}
+				<span className={`${ sx.box1.span2 }`}>{ product.lgText2 }</span>
+			</Typography>
 		</div>
-	)
-}
+
+		<img src={ urlSrc(product.image).url() } alt={ product.model.current } className={`${ sx.image }`} />
+
+		<NextLink passHref href={ `${ PATHS_ROOT.shop.path }/${ product.model.current }` } className={`${ sx.link }`}>
+			<Button color="red">{ product.btnText }</Button>
+		</NextLink>
+
+		<Typography variant="paragraph" className={`${ sx.description }`}>{ product.description }</Typography>
+	</div>
+)
 
 export { HeroBanner }
-// TODO: set data here

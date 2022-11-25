@@ -1,8 +1,15 @@
-import NextImage from 'next/image'
+// import NextImage from 'next/image'
 import NextLink from 'next/link'
+import { FC } from 'react'
 import { Typography, Button } from '@material-tailwind/react'
-import { footerBanner } from '@/src/constants'
+import type { IBanner } from '@/src/@types'
 import { PATHS_ROOT } from '@/src/routes'
+import { urlSrc } from '@/src/lib'
+
+
+interface IPFooterBanner {
+	product: Omit<IBanner, 'name'>
+}
 
 const sx = {
 	banner: 'relative bg-red-500 rounded-xl p-8 md:pt-20 grid gap-4 grid-cols-6',
@@ -20,36 +27,33 @@ const sx = {
 	},
 }
 
-const FooterBanner = () => {
-	return (
-		<div className={`${ sx.banner }`}>
-			<div className={`${ sx.box1.wrapper }`}>
-				<Typography variant="small" color="white">{ footerBanner.salesDiscount }</Typography>
-				<Typography variant="h2" className={`${ sx.box1.text2 }`}>
-					<span className="translate-x-[-0.1ch]">{ footerBanner.largeText1 }</span>{' '}
-					<span className="translate-x-[-0.05ch]">{ footerBanner.largeText2 }</span>
-				</Typography>
-				<Typography variant="small" color="white" className={`${ sx.box1.text3 }`}>{ footerBanner.salesTime }</Typography>
-			</div>
-
-			<NextImage
-				src={ footerBanner.image }
-				alt={ footerBanner.image_alt }
-				className={`${ sx.image }`}
-			/>
-
-			<div className={`${ sx.box2.wrapper }`}>
-				<Typography variant="small" color="white">{ footerBanner.smallText }</Typography>
-				<Typography variant="h2" color="white" className={`${ sx.box2.text2 }`}>{ footerBanner.midText }</Typography>
-				<Typography variant="paragraph" color="white" className={`${ sx.box2.description }`}>{ footerBanner.description }</Typography>
-
-				<NextLink passHref href={ `${ PATHS_ROOT.shop.path }/${ footerBanner.id }` } className={`${ sx.box2.link }`}>
-					<Button color="white">{ footerBanner.btnText }</Button>
-				</NextLink>
-			</div>
+const FooterBanner: FC<IPFooterBanner> = ({ product }) => (
+	<div className={`${ sx.banner }`}>
+		<div className={`${ sx.box1.wrapper }`}>
+			<Typography variant="small" color="white">{ product.salesDiscount }</Typography>
+			<Typography variant="h2" className={`${ sx.box1.text2 }`}>
+				<span className="translate-x-[-0.1ch]">{ product.lgText1 }</span>{' '}
+				<span className="translate-x-[-0.05ch]">{ product.lgText2 }</span>
+			</Typography>
+			<Typography variant="small" color="white" className={`${ sx.box1.text3 }`}>{ product.salesTime }</Typography>
 		</div>
-	)
-}
+
+		<img
+			src={ urlSrc(product.image).url() }
+			alt={ product.model.current }
+			className={`${ sx.image }`}
+		/>
+
+		<div className={`${ sx.box2.wrapper }`}>
+			<Typography variant="small" color="white">{ product.smText }</Typography>
+			<Typography variant="h2" color="white" className={`${ sx.box2.text2 }`}>{ product.mdText }</Typography>
+			<Typography variant="paragraph" color="white" className={`${ sx.box2.description }`}>{ product.description }</Typography>
+
+			<NextLink passHref href={ `${ PATHS_ROOT.shop.path }/${ product.model.current }` } className={`${ sx.box2.link }`}>
+				<Button color="white">{ product.btnText }</Button>
+			</NextLink>
+		</div>
+	</div>
+)
 
 export { FooterBanner }
-// TODO: set data here

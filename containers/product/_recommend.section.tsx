@@ -1,21 +1,27 @@
-// import React from 'react'
+import { FC } from 'react'
 import { Typography } from '@material-tailwind/react'
-import { CarouselSlider, ProductItemCard } from '@/components/shared'
-import { productList } from '@/src/constants'
+import { CarouselSlider } from '@/components/shared'
+import type { IProductDetail } from '@/src/@types'
+import { ProductItemCard } from '../'
+
+interface IPProductRecommend {
+	list: Array<Omit<IProductDetail, 'rating' | 'description'>>
+}
 
 const content = {
 	title: 'You May Also Like',
 }
 
-const ProductRecommend = ({ className="" }) => {
-	return (
-		<div>
-			<Typography variant="h3" className={`mb-8 text-center font-bold ${ className }`}>{ content.title }</Typography>
-			<CarouselSlider slides={ productList }>
-				{ (item) => <ProductItemCard item={ item } /> }
-			</CarouselSlider>
-		</div>
-	)
-}
+const ProductRecommend: FC<IPProductRecommend> = ({ list }) => (
+	<div>
+		<Typography variant="h3" className="mb-8 text-center font-bold">
+			{ content.title }
+		</Typography>
+
+		<CarouselSlider slides={ list }>
+			{ (item) => <ProductItemCard item={ item } /> }
+		</CarouselSlider>
+	</div>
+)
 
 export { ProductRecommend }
