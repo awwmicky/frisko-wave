@@ -13,8 +13,13 @@ const Footer = () => (
 					</Typography>
 					<div className="flex gap-2 place-content-center sm:place-content-end">
 						{ Children.toArray(footerContent.moreInfo.map((item) => (
-							<a title={ item.title } href={ item.link } className="relative h-full flex place-items-center after:absolute after:top-[110%] after:block after:w-full after:border-b-4 hover:after:border-b-black active:after:border-b-blue-gray-200 after:border-b-transparent">
-								<item.icon />
+							<a
+								title={ item.title }
+								href={ item.link }
+								target="_blank"
+								rel="noreferrer noopener"
+								className="relative h-full flex place-items-center after:absolute after:top-[110%] after:block after:w-full after:border-b-4 hover:after:border-b-black active:after:border-b-blue-gray-200 after:border-b-transparent"
+							><item.icon />
 							</a>
 						))) }
 					</div>
@@ -26,8 +31,13 @@ const Footer = () => (
 					</Typography>
 					<div className="flex gap-2 place-items-center place-content-center sm:place-content-start">
 						{ Children.toArray(footerContent.technologies.map((item) => (
-							<a title={ item.title } href={ item.link } className="relative h-full flex place-items-center after:absolute after:top-[110%] after:block after:w-full after:border-b-4 hover:after:border-b-black active:after:border-b-blue-gray-200 after:border-b-transparent">
-								<item.icon />
+							<a
+								title={ item.title }
+								href={ item.link }
+								target="_blank"
+								rel="noreferrer noopener"
+								className="relative h-full flex place-items-center after:absolute after:top-[110%] after:block after:w-full after:border-b-4 hover:after:border-b-black active:after:border-b-blue-gray-200 after:border-b-transparent"
+							><item.icon />
 							</a>
 						))) }
 					</div>

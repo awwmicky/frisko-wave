@@ -1,33 +1,43 @@
-import React, { FC, useState } from 'react'
+import React, { FC, ChangeEvent } from 'react'
 import { Input, IconButton, Chip } from '@material-tailwind/react'
 import { Icon } from '@/components/blocks'
 
 interface IPQuantityCounter {
+	productQty: number
+	cartQty: number
+	updateCartItemQty: (qty: number, val: string) => void
+	// setCartQty?: React.Dispatch<React.SetStateAction<number>>
 	className?: string
 	size?: "sm" | "md" | "lg"
-	qty: number
 }
 
-const QuantityCounter: FC<IPQuantityCounter> = ({ qty=0, size="md", className }) => {
-	const [ counter, setCounter ] = useState(1)
-	const [ MIN, MAX, isInStock ] = [ 1, qty, !!qty ]
-	const handleCounter = (e: React.ChangeEvent<HTMLInputElement>) => setCounter(Number(e.target.value))
-	const increment = () => (counter <= MAX) && setCounter((prev) => Number(prev)+1)
-	const decrement = () => (counter >= MIN) && setCounter((prev) => Number(prev)-1)
+const QuantityCounter: FC<IPQuantityCounter> = ({
+	productQty=0,
+	cartQty=1,
+	updateCartItemQty,
+	size="md",
+	className
+}) => {
+	const [ MIN, MAX, isInStock ] = [ 1, productQty, Boolean(productQty) ]
+	const inputSize = (size === 'sm') ? '!h-8 !w-10' : 'h-auto w-12'
 
-	const inputSize = (size === 'sm') ? '!h-8 !w-8' : 'h-auto w-14'
-	const inputProps = {
-		containerProps: { className: `${ inputSize } min-w-min w-8 text-center` },
-		className: 'px-1 text-center',
+	const handleInputQty = (e: ChangeEvent<HTMLInputElement>) => {
+		const num = Number(e.target.value)
+		if (num < MIN) return updateCartItemQty(MIN, '')
+		if (num > MAX) return updateCartItemQty(MAX, '')
+		if (MIN <= num && num <= MAX) return updateCartItemQty(num, '')
 	}
 
-	if (!isInStock) return <Chip color="red" value="Sold Out" className={`${ className }`} />
+	const incrementQty = () => (cartQty < MAX) && updateCartItemQty(1, 'increment')
+	const decrementQty = () => (cartQty > MIN) && updateCartItemQty(1, 'decrement')
+
+	if (!isInStock) return <Chip value={"Sold Out"} color="red" className={`${ className }`} />
 
 	return (
 		<div className={ `flex gap-4 place-content-start ${ className }` }>
-			<Input value={ counter } onChange={ handleCounter } type="number" min={ MIN } max={ MAX } {...inputProps} />
-			<IconButton onClick={ increment } variant="text" size={ size } ripple={false} color="gray" className="px-4"><Icon.Plus /></IconButton>
-			<IconButton onClick={ decrement } variant="text" size={ size } ripple={false} color="gray" className="px-4"><Icon.Minus /></IconButton>
+			<Input value={ cartQty } onChange={ handleInputQty } type="number" min={ MIN } max={ MAX } containerProps={{ className: `${ inputSize } min-w-min [&>input]:px-1 [&>input]:text-center` }} />
+			<IconButton onClick={ incrementQty } variant="text" size={ size } ripple={false} color="gray" className="px-4"><Icon.Plus /></IconButton>
+			<IconButton onClick={ decrementQty } variant="text" size={ size } ripple={false} color="gray" className="px-4"><Icon.Minus /></IconButton>
 		</div>
 	)
 }

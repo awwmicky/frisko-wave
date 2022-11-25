@@ -1,19 +1,15 @@
 import NextLink from 'next/link'
 import { useRouter } from 'next/router'
-import { FC, Children } from 'react'
+import { Children } from 'react'
 import { Typography, IconButton } from '@material-tailwind/react'
 import { Icon } from '@/components/blocks'
-import type { IDrawer } from '@/src/@types'
 import { headerContent } from '@/src/constants'
 import { PATHS_ROOT, PATHS_NAV } from '@/src/routes'
-
-interface IPCartMenu extends Omit<IDrawer, 'isOpen'> {
-	totalCartItems?: number
-}
+import { useGlobalStore } from '@/src/store'
 
 const Branding = () => (
 	<NextLink href={ PATHS_ROOT.home.path } className="flex gap-2 place-items-center">
-		<headerContent.brand_logo />
+		<Icon.BrandLogo />
 		<Typography variant="h5" color="red" textGradient>
 			<code>{ headerContent.brand_name }</code>
 		</Typography>
@@ -33,22 +29,26 @@ const NavBar = () => {
 	)
 }
 
-const CartMenu: FC<IPCartMenu> = ({ toggleDrawer, totalCartItems=0 }) => (
-	<div className="relative">
-		<IconButton onClick={ toggleDrawer } variant="outlined" color="red" size="sm">
-			<Icon.Shopping />
-		</IconButton>
-		{ (totalCartItems > 0) && (
-			<span onClick={ toggleDrawer } className={`\
-			${ (totalCartItems < 100) ? 'w-6' : 'w-min-6' }\
-			cursor-pointer absolute bg-red-500 text-white border-white p-1 h-min-6\
-			border-2 rounded-full text-center text-xs leading-[1]
-			top-[70%] left-[-30%]
-			`}>{ totalCartItems }
-			</span>
-		)}
-	</div>
-)
+const CartMenu = () => {
+	const toggleCart = useGlobalStore((state) => state.toggleCart)
+	const totalQuantities = useGlobalStore((state) => state.totalQuantities)
+
+	return (
+		<div className="relative">
+			<IconButton onClick={ toggleCart } variant="outlined" color="red" size="sm">
+				<Icon.Shopping />
+			</IconButton>
+			{ (totalQuantities > 0) && (
+				<span onClick={ toggleCart } className={`\
+				${ (totalQuantities < 100) ? 'w-6' : 'w-min-6' }\
+				cursor-pointer absolute bg-red-500 text-white border-white p-1 h-min-6\
+				border-2 rounded-full text-center text-xs leading-[1] top-[70%] left-[-30%]\
+				`}>{ totalQuantities }
+				</span>
+			)}
+		</div>
+	)
+}
 
 export {
 	Branding,

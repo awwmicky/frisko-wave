@@ -2,12 +2,13 @@
 import 'react-multi-carousel/lib/styles.css'
 import { FC, Children, ReactElement } from 'react'
 import Carousel from 'react-multi-carousel'
-import type { IProductItem } from '@/src/@types'
-// import images from './_images.json'
+import type { IProductDetail } from '@/src/@types'
+
+type TProduct = Omit<IProductDetail, 'rating' | 'description'>
 
 interface IPReactMultiCarousel {
-	children?: (item: IProductItem) => ReactElement
-	slides?: Array<IProductItem>
+	children?: (item: TProduct) => ReactElement
+	slides?: Array<TProduct>
 }
 
 const screenSize = {
@@ -46,18 +47,16 @@ const carouselSettings = {
   transitionDuration: 500,
   // deviceType: props.deviceType,
   removeArrowOnDeviceType: ['tablet', 'mobile'],
-  containerClass: 'rmc-container z-0 py-6',
-	sliderClass: 'rmc-track', // flex gap-2
-  itemClass: 'rmc-item px-2 md:px-4', // px-6
+  containerClass: 'rmc-container z-0 py-8',
+	sliderClass: 'rmc-track',
+  itemClass: 'rmc-item px-2 md:px-4',
   dotListClass: 'rmc-dot-list',
 	// renderDotsOutside: true,
 }
-// gap-x-6 gap-y-12
 
 const CarouselSlider: FC<IPReactMultiCarousel> = ({ children, slides=[] }) => (
 	<Carousel { ...carouselSettings }>
-		{ Children.toArray(slides.map((item) => children?.(item))) }
-		{/* { Children.toArray(slides.map(children)) } */}
+		{ Children.toArray(slides?.map((item) => children?.(item))) }
 	</Carousel>
 )
 

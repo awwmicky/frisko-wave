@@ -1,5 +1,4 @@
 export * from './CarouselSlider'
 export * from './GallerySlider'
-export * from './ProductItemCard'
 export * from './QuantityCounter'
 export * from './StarRatings'

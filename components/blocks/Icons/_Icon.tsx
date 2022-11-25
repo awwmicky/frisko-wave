@@ -15,6 +15,7 @@ import {
 import {
 	BsSoundwave,
 	BsBagCheckFill,
+	BsBagXFill,
 } from 'react-icons/bs'
 
 export const BrandLogo = () => <BsSoundwave size={20} strokeWidth={0.25} />
@@ -27,3 +28,4 @@ export const StarEmpty = () => <AiOutlineStar color="red" />
 export const StarFilled = () => <AiFillStar color="red" />
 export const Shopping = () => <AiOutlineShopping size={20} />
 export const CheckoutSuccess = () => <BsBagCheckFill size={40} color="green" />
+export const CheckoutCancelled = () => <BsBagXFill size={40} color="red" />
