@@ -1,7 +1,6 @@
-import { Icon, InfoIcon, TechIcon } from '@/components/blocks'
+import { InfoIcon, TechIcon } from '@/components/blocks'
 
 export const headerContent = {
-	brand_logo: Icon.BrandLogo,
 	brand_name: 'Frisco Wave',
 }
 
@@ -12,15 +11,16 @@ export const footerContent = {
 		madeBy: 'Concept project made by Michael Alvarez',
 	},
 	moreInfo: [
-		{ title: 'Portfolio', link: 'https://aww-micky.web.app/', icon: InfoIcon.Portfolio },
-		{ title: 'Codebase', link: 'https://github.com/awwmicky/frisco-wave', icon: InfoIcon.Codebase },
+		{ title: 'Portfolio', icon: InfoIcon.Portfolio, link: 'https://aww-micky.web.app/' },
+		{ title: 'Codebase', icon: InfoIcon.Codebase, link: 'https://github.com/awwmicky/frisco-wave' },
 	],
 	technologies: [
-		{ title: 'Next.js', link: 'https://nextjs.org/', icon: TechIcon.NextJs },
-		{ title: 'TypeScript', link: 'https://typescriptlang.org/', icon: TechIcon.TypeScript },
-		{ title: 'React', link: 'https://reactjs.org/', icon: TechIcon.React },
-		{ title: 'Tailwind CSS', link: 'https://tailwindcss.com/', icon: TechIcon.TailwindCss },
-		{ title: 'Sanity', link: 'https://sanity.io/', icon: TechIcon.Sanity },
-		{ title: 'Stripe', link: 'https://stripe.com/', icon: TechIcon.Stripe },
+		{ title: 'Next.js', icon: TechIcon.NextJs, link: 'https://nextjs.org/' },
+		{ title: 'TypeScript', icon: TechIcon.TypeScript, link: 'https://typescriptlang.org/' },
+		{ title: 'React', icon: TechIcon.React, link: 'https://reactjs.org/' },
+		{ title: 'Tailwind CSS', icon: TechIcon.TailwindCss, link: 'https://tailwindcss.com/' },
+		{ title: 'Zustand', icon: TechIcon.Zustand, link: 'https://zustand-demo.pmnd.rs/' },
+		{ title: 'Sanity', icon: TechIcon.Sanity, link: 'https://sanity.io/' },
+		{ title: 'Stripe', icon: TechIcon.Stripe, link: 'https://stripe.com/' },
 	],
 }
