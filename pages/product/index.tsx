@@ -1,27 +1,47 @@
+import type { NextPage, GetServerSideProps } from 'next'
 import { Children } from 'react'
 import { Typography } from '@material-tailwind/react'
 import { Layer } from '@/components/layout'
-import { ProductItemCard } from '@/components/shared'
-import { productList } from '@/src/constants'
+import { ProductItemCard } from '@/containers'
+import type { IProductDetail } from '@/src/@types'
+import { productQuery } from '@/src/@queries'
+import { sanityQuery } from '@/src/lib'
 
-// grid-flow-row-dense
-// transition duration-100 hover:scale-105 active:scale-100
-const ProductPage = () => {
+interface IPProduct {
+	productList: Array<Omit<IProductDetail, 'rating' | 'description'>>
+}
+
+const ProductPage: NextPage<IPProduct> = ({ productList }) => {
 	return (
 		<Layer className="mt-2 mb-10 flex flex-col gap-10">
-			<Typography variant="h1" className="text-center font-bold">Product Page</Typography>
-			<div className="my-10 grid gap-x-6 gap-y-12 grid-cols-6">
+			<Typography variant="h1" className="text-center font-bold">
+				Product Page
+			</Typography>
+
+			<div className="my-10 grid gap-x-6 gap-y-12 grid-cols-12">
 				{ Children.toArray(productList.map((item) => (
-					<ProductItemCard item={ item } className="col-span-6 sm:col-span-3 lg:col-span-2" />
-				))) }
+					<ProductItemCard
+						item={ item }
+						className="col-span-full sm:col-span-6 lg:col-span-4 xl:col-span-3"
+					/>
+				)))}
 			</div>
-			{/* <div className="py-10 flex flex-wrap gap-x-6 gap-y-16 place-content-start">
-				{ Children.toArray(productList.map((item) => (
-					<ProductItemCard item={ item } className="flex-auto basis-80" />
-				))) }
-			</div> */}
 		</Layer>
 	)
 }
 
+
+const getServerSideProps: GetServerSideProps = async () => {
+	const productList = await sanityQuery.fetch(productQuery) as Pick<IPProduct, 'productList'>
+
+	if (!productList) return {
+		notFound: true, props: null,
+	}
+
+	return {
+		props: { productList },
+	}
+}
+
 export default ProductPage
+export { getServerSideProps }
