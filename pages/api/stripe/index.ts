@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { StatusCodes } from 'http-status-codes'
 import Stripe from 'stripe'
 import { ICartDetail } from '@/src/@types'
-import { logger, urlSrc } from '@/src/lib'
+import { urlSrc } from '@/src/lib'
 
 interface IExtNextApiRequest extends NextApiRequest {
 	body: Record<'cartList', Array<ICartDetail>>
