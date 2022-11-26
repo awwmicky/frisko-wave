@@ -57,8 +57,8 @@ const checkoutParams = (req: IExtNextApiRequest): Stripe.Checkout.SessionCreateP
 	payment_method_types: ['card'],
 	billing_address_collection: 'auto',
 	shipping_options: [
-		{ shipping_rate: process.env.NEXT_PUBLIC_STRIP_SHIPPING_RATE_ID_1 },
-		{ shipping_rate: process.env.NEXT_PUBLIC_STRIP_SHIPPING_RATE_ID_2 },
+		{ shipping_rate: process.env.NEXT_PUBLIC_STRIPE_SHIPPING_RATE_ID_1 },
+		{ shipping_rate: process.env.NEXT_PUBLIC_STRIPE_SHIPPING_RATE_ID_2 },
 	],
 	line_items: req.body.cartList.map((item) => ({
 		price_data: {
