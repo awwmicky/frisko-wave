@@ -2,7 +2,7 @@
 export type TImages = string | any
 
 export interface IBanner {
-	image: string | StaticImageData
+	image: TImages
 	name: string
 	model: Record<'current', string>
 	smText: string
