@@ -46,7 +46,7 @@ const handleStripeRoute = async (
 	} catch (error) {
 		const reason = error as Error
 		// console.warn('[issue]', reason)
-		logger.error(reason.message, '[reason]')
+		// logger.error(reason.message, '[reason]')
 		res.status(StatusCodes.INTERNAL_SERVER_ERROR).send(reason.message)
 	}
 }

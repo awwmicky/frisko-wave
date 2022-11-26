@@ -73,3 +73,16 @@
   - 200k api request
   - 1m api cdn request
   - 20bg bandwidth
+
+---
+
+## SEO
+
+- facebook :: https://developers.facebook.com/tools/debug/
+- twitter :: https://cards-dev.twitter.com/validator
+- linkedin :: https://www.linkedin.com/post-inspector/
+- OG type :: https://ogp.me/#types
+
+- Max file size: 5 MB
+- Minimum image dimensions: 1200 (w) x 627 (h)
+- Recommended ratio: 1.91:1

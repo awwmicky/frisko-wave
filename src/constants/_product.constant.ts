@@ -12,7 +12,7 @@ export const productList = [
 ]
 
 export const productDetail = {
-	images: images, // x4
+	images: images,
 	model: { current: 'bi-1000-d' },
 	name: 'Boast Immortal 1000 D',
 	category: 'headphones' as const,

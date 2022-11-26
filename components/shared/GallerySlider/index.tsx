@@ -16,10 +16,7 @@ const carouselSettings = {
 	showFullscreenButton: true,
 	useBrowserFullscreen: true,
 	showPlayButton: false,
-	// showBullets: true,
-	// showIndex: false,
 	slideOnThumbnailOver: true,
-	// disableThumbnailScroll: true,
 	thumbnailPosition: 'left' as const,
 	/*  */
 	// autoPlay: true,

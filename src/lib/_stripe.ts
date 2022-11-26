@@ -18,11 +18,11 @@ export const createStripeCheckout = async (cartList: Array<ICartDetail> = []) =>
 		const stripe = await getStripe()
 		const result = await ky.post(URI_STRIPE, URI_OPTIONS).json() as Stripe.Checkout.Session
 		toast.loading('Redirecting...')
-		console.debug('[stripe]', { sessionId: result.id })
+		// console.debug('[stripe]', { sessionId: result.id })
     stripe!.redirectToCheckout({ sessionId: result.id })
 	} catch (error) {
-		const reason = error as Error
-		console.warn('[error]', reason)
+		// const reason = error as Error
+		// console.warn('[error]', reason)
 		toast.error('Somthing went wrong... Try again')
 	}
 }

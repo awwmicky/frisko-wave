@@ -14,7 +14,7 @@ export const runFireworks = () => {
     if (timeLeft <= 0) return clearInterval(interval)
 
     const particleCount = 50 * (timeLeft / duration)
-    // since particles fall down, start a bit higher than random
+    // adjust confetti start point
     confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: yAxis } }))
     confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: yAxis } }))
   }, TIMER)

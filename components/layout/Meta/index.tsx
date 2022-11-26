@@ -6,13 +6,14 @@ interface IPMeta {
 }
 
 const content = {
-	title: '𝚆𝚎𝚋 𝙰𝚙𝚙 | 🐜',
-	description: 'Learning to use Next.js',
-	keywords: 'next.js, typescript, react, tailwindcss, sanity, stripe',
-	url_domain: '',
+	// title: '𝚆𝚎𝚋 𝙰𝚙𝚙 | 🐜',
+	title: 'Frisko Wave eCommerce | Home',
+	description: `Be an audio head, find the product that best fits the way you music needs. You'll rock until the beat drops.`,
+	keywords: 'next.js, typescript, react, tailwindcss, zustand, sanity, stripe',
 	url_name: 'http://localhost:3000/',
+	url_domain: '',
 	img_thumbnail: '',
-	img_alt: '🎈',
+	img_alt: '🖼',
 }
 
 const Meta = ({
@@ -21,15 +22,16 @@ const Meta = ({
 }: IPMeta) => (
   <Head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{title}</title>
-    <meta name="title" content={title} />
-    <meta name="description" content={description} />
-    <meta name="keywords" content={content.keywords} />
+		{/*  */}
+    <title>{ title }</title>
+    <meta name="title" content={ title } />
+    <meta name="description" content={ description } />
+    <meta name="keywords" content={ content.keywords } />
     {/*  */}
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
+    <meta property="og:title" content={ title } />
+    <meta property="og:description" content={ description } />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content={content.url_name} />
+    <meta property="og:url" content={ content.url_name } />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="627" />
     <meta property="og:image" content="/thumbnail.png" />
@@ -40,15 +42,3 @@ const Meta = ({
 )
 
 export { Meta }
-
-/*  
-SEO TOOLS
-- facebook :: https://developers.facebook.com/tools/debug/
-- twitter :: https://cards-dev.twitter.com/validator
-- linkedin :: https://www.linkedin.com/post-inspector/
-- OG type :: https://ogp.me/#types
----
-Max file size: 5 MB
-Minimum image dimensions: 1200 (w) x 627 (h)
-Recommended ratio: 1.91:1
-*/

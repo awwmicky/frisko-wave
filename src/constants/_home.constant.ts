@@ -1,7 +1,6 @@
 import { imageExample } from '../assets'
 
 export const heroBanner = {
-	// id: 3,
 	smText: 'Boast Immortal 1000D',
 	lgText1: 'Wireless',
 	lgText2: 'Headphone',
@@ -17,7 +16,6 @@ export const heroBanner = {
 }
 
 export const footerBanner = {
-	// id: 2,
 	salesDiscount: '20% OFF',
 	salesTime: 'Nov 15 -  Dec 7',
 	lgText1: 'Fine',

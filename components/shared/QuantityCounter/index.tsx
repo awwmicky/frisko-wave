@@ -6,7 +6,6 @@ interface IPQuantityCounter {
 	productQty: number
 	cartQty: number
 	updateCartItemQty: (qty: number, val: string) => void
-	// setCartQty?: React.Dispatch<React.SetStateAction<number>>
 	className?: string
 	size?: "sm" | "md" | "lg"
 }

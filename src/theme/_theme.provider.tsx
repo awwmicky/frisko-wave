@@ -1,6 +1,5 @@
 import { FC, PropsWithChildren } from 'react'
 import { ThemeProvider as MTRProvider } from '@material-tailwind/react'
-// import { customTheme } from './theme'
 
 interface IPThemeProvider extends PropsWithChildren {}
 

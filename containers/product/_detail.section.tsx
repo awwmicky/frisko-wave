@@ -26,17 +26,14 @@ const ProductDetail: FC<IPProductDetail> = ({ item, className="" }) => {
 	const updateCartItemQty = (qty=1, val="") => {
 		if (val === 'increment') return setCartQty((prev) => prev+1)
 		if (val === 'decrement') return setCartQty((prev) => prev-1)
-
 		setCartQty(qty)
 	}
 
 	const handleAddCartItem = () => {
-		console.debug('[add to cart]', cartQty)
 		onAddToCart(product, cartQty)
 	}
 
 	const handleBuyItem = () => {
-		console.debug('[buy now]', cartQty)
 		onAddToCart(product, cartQty)
 		showCart()
 	}
