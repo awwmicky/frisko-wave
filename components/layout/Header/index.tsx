@@ -1,5 +1,5 @@
-import { Layer } from '../'
 import { Branding, NavBar, CartMenu } from './_.blocks'
+import { Layer } from '../'
 
 const Header = () => (
   <header className="z-[11] sticky bg-white top-0 border-b">

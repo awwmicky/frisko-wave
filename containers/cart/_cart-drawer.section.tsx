@@ -29,8 +29,7 @@ const sx = {
 
 const CartDrawer = () => {
 	const [ isLoading, setLoading ] = useState(false)
-	const { cartList, isCartOpen, hideCart, totalQuantities, totalPrice
-	} = useGlobalStore((state) => state)
+	const { cartList, isCartOpen, hideCart, totalQuantities, totalPrice } = useGlobalStore((state) => state)
 	const isDrawerOpen = isCartOpen ? 'flex' : 'hidden'
 
 	const onCheckout = async (_e: MouseEvent<HTMLButtonElement>) => {
