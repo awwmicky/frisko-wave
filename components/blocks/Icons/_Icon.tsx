@@ -1,4 +1,8 @@
 import {
+	Bars,
+} from 'react-loading-icons'
+
+import {
   AiOutlineMinus,
   AiOutlinePlus,
   AiOutlineLeft,
@@ -29,3 +33,4 @@ export const StarFilled = () => <AiFillStar color="red" />
 export const Shopping = () => <AiOutlineShopping size={20} />
 export const CheckoutSuccess = () => <BsBagCheckFill size={40} color="green" />
 export const CheckoutCancelled = () => <BsBagXFill size={40} color="red" />
+export const Loading = () => <Bars height={20} />

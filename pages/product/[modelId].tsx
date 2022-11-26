@@ -4,7 +4,7 @@ import { Layer } from '@/components/layout'
 import * as PItem from '@/containers/product'
 import type { IProductDetail } from '@/src/@types'
 import { productModelQuery, productItemQuery, productQuery } from '@/src/@queries'
-import { logger, sanityQuery } from '@/src/lib'
+import { sanityQuery } from '@/src/lib'
 
 interface IPProductItem {
 	productList: Array<Omit<IProductDetail, 'rating' | 'description'>>
@@ -49,14 +49,14 @@ const getStaticProps: GetStaticProps<IPProductItem, IStaticParams> = async (ctx)
 	const { modelId } = ctx.params!
 	const queryParams = { modelId }
 
-	const productList = await sanityQuery
-		.fetch(productQuery) as Array<Omit<IProductDetail, 'rating' | 'description'>>
+	const productList = await sanityQuery.fetch(
+		productQuery
+	) as Array<Omit<IProductDetail, 'rating' | 'description'>>
 
-  const productItem = await sanityQuery
-		.fetch(productItemQuery, queryParams) as Pick<IPProductItem, 'productDetail' | 'productGallery'>
+  const productItem = await sanityQuery.fetch(
+		productItemQuery, queryParams
+	) as Pick<IPProductItem, 'productDetail' | 'productGallery'>
 	const { productDetail, productGallery } = productItem
-
-	// logger.info(productItem)
 
 	if (!modelId || !productList || !productDetail || !productGallery) return {
 		notFound: true, props: null,

@@ -1,5 +1,5 @@
+import type { NextPage } from 'next'
 import NextLink from 'next/link'
-import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 import { Typography, Button } from '@material-tailwind/react'
 import { Layer } from '@/components/layout'
@@ -9,24 +9,25 @@ import { PATHS_ROOT } from '@/src/routes'
 import { useGlobalStore } from '@/src/store'
 import { runFireworks } from '@/src/utils'
 
-const CheckoutPage = () => {
+interface IPCheckout {
+	status: "success" | "cancelled"
+}
+
+const CheckoutPage: NextPage<IPCheckout> = ({ status }) => {
 	const resetCart = useGlobalStore((state) => state.resetCart)
-	const { status } = useRouter().query!
-	const checkoutStatus = (status === 'success') ? 'success' : 'cancelled'
 
 	useEffect(() => {
-		if (status === 'success') {
-			runFireworks()
-			resetCart()
-		}
-	}, [ status ])
+		if (status !== 'success') return
+		runFireworks()
+		resetCart()
+	}, [ status, resetCart ])
 
 	return (
 		<Layer className="h-full text-center my-10 flex flex-col place-content-center">
 			<div className="bg-gray-300 px-8 py-16 rounded-xl flex flex-col gap-4 place-items-center">
 				{ (status === 'success') ? <Icon.CheckoutSuccess /> : <Icon.CheckoutCancelled />}
-				<Typography variant="h2" className="font-bold">{ checkoutContent[checkoutStatus].title }</Typography>
-				<Typography variant="paragraph">{ checkoutContent[checkoutStatus].text }</Typography>
+				<Typography variant="h2" className="font-bold">{ checkoutContent[status].title }</Typography>
+				<Typography variant="paragraph">{ checkoutContent[status].text }</Typography>
 
 				<Typography variant="paragraph">
 					<span>{ checkoutContent.link.text }</span>{' '}
@@ -41,6 +42,11 @@ const CheckoutPage = () => {
 			</div>
 		</Layer>
 	)
+}
+
+CheckoutPage.getInitialProps = (ctx) => {
+	const { status } = ctx.query as Pick<IPCheckout, 'status'>
+  return { status }
 }
 
 export default CheckoutPage

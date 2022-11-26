@@ -36,13 +36,11 @@ const CartItemCard: FC<IPCartItemCard> = ({ item, idx }) => {
 	}
 
 	const handleRemoveCartItem = (_e: MouseEvent<HTMLButtonElement>) => {
-		console.info('[remove from cart]')
 		onRemoveFromCart(idx)
-		// onRemoveFromCart(item.model.current)
 	}
 
 	useEffect(() => { setCartQty(item.cartQty) }, [ item.cartQty ])
-	useEffect(() => {	onUpdateCartQty(idx, cartQty)}, [ cartQty ])
+	useEffect(() => {	onUpdateCartQty(idx, cartQty)}, [ onUpdateCartQty, idx, cartQty ])
 
 	return (
 		<Card className={`${ sx.card }`}>

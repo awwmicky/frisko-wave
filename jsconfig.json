@@ -3,18 +3,10 @@
     "baseUrl": "./",
     "sourceMap": true,
     "paths": {
-      // "@/ui/*": ["./components/*", "./components"],
-      // "@/ft/*": ["./features/*", "./features"],
-      "@/assets/*": ["./assets/*", "./assets"],
       "@/components/*": ["./components/*", "./components"],
       "@/containers/*": ["./containers/*", "./containers"],
-      // "@/routes": ["./src/routes/*", "./src/routes"],
-      // "@/features/*": ["./src/features/*", "./src/features"],
-      // "@/services/*": ["./src/services/*", "./src/services"],
       "@/src/*": ["./src/*", "./src"],
       "@/*": ["./*", "./src/*"],
     }
   },
-  // "include": ["src"],
-  // "exclude": ["dist", "node_modules"]
 }

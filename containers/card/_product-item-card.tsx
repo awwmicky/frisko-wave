@@ -39,7 +39,6 @@ const ProductItemCard: FC<IPProductItemCard> = ({ item, className="" }) => {
 
 	const onAddCartItem = (e: MouseEvent<HTMLButtonElement>) => {
 		e.preventDefault()
-		console.info('[remove from cart]')
 		onAddToCart(item as IProductDetail)
 	}
 

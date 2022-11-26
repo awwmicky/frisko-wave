@@ -1,9 +1,11 @@
 import NextLink from 'next/link'
-import { Children } from 'react'
+import { Children, MouseEvent, useState } from 'react'
 import { Typography, Button, IconButton } from '@material-tailwind/react'
 import { Icon } from '@/components/blocks'
 import { PATHS_ROOT } from '@/src/routes'
+import { createStripeCheckout } from '@/src/lib'
 import { useGlobalStore } from '@/src/store'
+import { delay } from '@/src/utils'
 import { CartItemCard } from '../'
 
 const content = {
@@ -21,14 +23,21 @@ const sx = {
 		wrapper: 'mt-auto mr-4 grid gap-4 grid-col-2 grid-row-2',
 		text: 'col-start-1 font-bold',
 		subtotal: 'col-start-[-0] text-right font-bold',
-		payBtnText: 'row-start-2 col-span-2',
+		payBtnText: 'row-start-2 col-span-2 [&>svg]:mx-auto',
 	},
 }
 
 const CartDrawer = () => {
+	const [ isLoading, setLoading ] = useState(false)
 	const { cartList, isCartOpen, hideCart, totalQuantities, totalPrice
 	} = useGlobalStore((state) => state)
 	const isDrawerOpen = isCartOpen ? 'flex' : 'hidden'
+
+	const onCheckout = async (_e: MouseEvent<HTMLButtonElement>) => {
+		setLoading(true)
+		await createStripeCheckout(cartList)
+		await delay('', 1500).then(() => setLoading(false))
+	}
 
 	return (
 		<aside className={`${ sx.sidebar } ${ isDrawerOpen }`}>
@@ -54,12 +63,8 @@ const CartDrawer = () => {
 					<div className={`${ sx.box.wrapper }`}>
 						<Typography variant="h5" className={`${ sx.box.text }`}>Subtotal</Typography>
 						<Typography variant="h5" className={`${ sx.box.subtotal }`}>${ totalPrice }</Typography>
-						<Button
-							// onClick={ () => createStripeCheckout() }
-							color="red"
-							size="lg"
-							className={`${ sx.box.payBtnText }`}
-						>{ content.btnText2 }
+						<Button	onClick={ onCheckout } disabled={ isLoading } color="red" size="lg" className={`${ sx.box.payBtnText }`}>
+							{ (isLoading) ? <Icon.Loading /> : content.btnText2 }
 						</Button>
 					</div>
 				</>
