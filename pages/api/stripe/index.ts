@@ -2,7 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { StatusCodes } from 'http-status-codes'
 import Stripe from 'stripe'
 import { ICartDetail } from '@/src/@types'
-// import { urlSrc } from '@/src/lib'
+import { urlSrc } from '@/src/lib'
 
 interface IExtNextApiRequest extends NextApiRequest {
 	body: Record<'cartList', Array<ICartDetail>>
@@ -54,26 +54,18 @@ const checkoutParams = (req: IExtNextApiRequest): Stripe.Checkout.SessionCreateP
 	mode: 'payment',
 	payment_method_types: ['card'],
 	billing_address_collection: 'auto',
-	phone_number_collection: {
-		enabled: false,
-	},
-	metadata: {
-		card_number: '4242 4242 4242 4242',
-		card_name: 'test mode',
-		postal_code: '90210',
-	},
+	customer_email: 'payment@test-mode.com',
 	shipping_options: [
 		{ shipping_rate: process.env.NEXT_PUBLIC_STRIPE_SHIPPING_RATE_ID_1 },
 		{ shipping_rate: process.env.NEXT_PUBLIC_STRIPE_SHIPPING_RATE_ID_2 },
 	],
-	customer_email: 'payment@test-mode.com',
 	line_items: req.body.cartList.map((item) => {
-		const endpoint = {
-			projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
-			dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || 'production',
-		}
-		const baseUrl = `https://cdn.sanity.io/images/${endpoint.projectId}/${endpoint.dataset}/`
-		const imageUrl = item.images?.asset._ref.replace('image-', baseUrl).replace('-webp', '.webp')
+		// const endpoint = {
+		// 	projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
+		// 	dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || 'production',
+		// }
+		// const baseUrl = `https://cdn.sanity.io/images/${endpoint.projectId}/${endpoint.dataset}/`
+		// const imageUrl = item.images?.asset._ref.replace('image-', baseUrl).replace('-webp', '.webp')
 
 		// ({
 		return {
@@ -81,8 +73,8 @@ const checkoutParams = (req: IExtNextApiRequest): Stripe.Checkout.SessionCreateP
 			currency: 'usd',
 			product_data: {
 				name: item.name,
-				images: [imageUrl],
-				// images: [urlSrc(item.images).url()],
+				// images: [imageUrl],
+				images: [urlSrc(item.images).url()],
 			},
 			unit_amount: item.price * 100,
 		},
