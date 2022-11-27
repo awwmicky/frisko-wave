@@ -24,22 +24,20 @@ const handleStripeRoute = async (
 	req: NextApiRequest,
 	res: NextApiResponse
 ) => {
-  const { method } = req
-
 	try {
-		switch (method) {
+		switch (req.method) {
 			case METHOD.POST: {
 				const params = checkoutParams(req)
-				// console.info(`[${method}`, params)
+				// console.info(`[${req.method}`, params)
 				const session = await stripe.checkout.sessions.create(params)
 				// logger.info(session, '[session]')
 				res.status(StatusCodes.OK).json(session)
 				break
 			}
 			default: {
-				res.setHeader('Allow', ['POST'])
+				res.setHeader('Allow', [ 'POST' ])
 				// res.setHeader('Allow', ['GET', 'PUT', 'PATCH', 'DELETE'])
-				res.status(StatusCodes.METHOD_NOT_ALLOWED).send(`Method ${ method } Not Allowed`)
+				res.status(StatusCodes.METHOD_NOT_ALLOWED).send(`Method ${ req.method } Not Allowed`)
 				break
 			}
 		}
@@ -56,21 +54,28 @@ const checkoutParams = (req: IExtNextApiRequest): Stripe.Checkout.SessionCreateP
 	mode: 'payment',
 	payment_method_types: ['card'],
 	billing_address_collection: 'auto',
+	phone_number_collection: {
+		enabled: false,
+	},
+	metadata: {
+		card_number: '4242 4242 4242 4242',
+		card_name: 'test mode',
+		postal_code: '90210',
+	},
 	shipping_options: [
 		{ shipping_rate: process.env.NEXT_PUBLIC_STRIPE_SHIPPING_RATE_ID_1 },
 		{ shipping_rate: process.env.NEXT_PUBLIC_STRIPE_SHIPPING_RATE_ID_2 },
 	],
-	// line_items: req.body.cartList.map((item) => ({
+	customer_email: 'payment@test-mode.com',
 	line_items: req.body.cartList.map((item) => {
 		const endpoint = {
 			projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
-			dataset: (process.env.NEXT_PUBLIC_SANITY_DATASET || 'production'),
+			dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || 'production',
 		}
 		const baseUrl = `https://cdn.sanity.io/images/${endpoint.projectId}/${endpoint.dataset}/`
 		const imageUrl = item.images?.asset._ref.replace('image-', baseUrl).replace('-webp', '.webp')
-		// const imageUrl = imageRef.replace('image-', baseUrl).replace('-webp', '.webp')
-		console.debug('[image]', imageUrl)
 
+		// ({
 		return {
 		price_data: {
 			currency: 'usd',

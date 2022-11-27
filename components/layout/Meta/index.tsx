@@ -10,10 +10,13 @@ const content = {
 	title: 'Frisko Wave eCommerce | App',
 	description: `Be an audio head, find the product that best fits the way you music needs. You'll rock until the beat drops.`,
 	keywords: 'next.js, typescript, react, tailwindcss, zustand, sanity, stripe',
-	url_name: 'http://localhost:3000/',
+	// url_name: 'http://localhost:3000/',
+	url_name: 'https://frisko-wave-app.vercel.app/',
 	url_domain: '',
 	img_thumbnail: '',
-	img_alt: '🖼',
+	img_thumbnail_alt: '🖼',
+	img_favion: '',
+	img_favicon_alt: 'ℹ',
 }
 
 const Meta = ({

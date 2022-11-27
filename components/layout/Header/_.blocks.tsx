@@ -9,8 +9,9 @@ import { useGlobalStore } from '@/src/store'
 
 const Branding = () => (
 	<NextLink href={ PATHS_ROOT.home.path } className="flex gap-2 place-items-center">
-		<Icon.BrandLogo />
-		<Typography variant="h5" color="red" textGradient>
+		{/* <Icon.BrandLogo /> */}
+		<img src="/favicon.png" alt="brand-logo" className="w-6" />
+		<Typography variant="h5" color="black">
 			<code>{ headerContent.brand_name }</code>
 		</Typography>
 	</NextLink>
