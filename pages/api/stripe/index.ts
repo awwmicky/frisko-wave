@@ -39,7 +39,7 @@ const handleStripeRoute = async (
 			default: {
 				res.setHeader('Allow', ['POST'])
 				// res.setHeader('Allow', ['GET', 'PUT', 'PATCH', 'DELETE'])
-				res.status(StatusCodes.METHOD_NOT_ALLOWED).end(`Method ${ method } Not Allowed`)
+				res.status(StatusCodes.METHOD_NOT_ALLOWED).send(`Method ${ method } Not Allowed`)
 				break
 			}
 		}
