@@ -41,6 +41,7 @@ const Meta = ({
     {/*  */}
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" type="image/png" href="/favicon.png" />
+		<link rel="mask-icon" type="image/svg+xml" href="/favicon.svg" />
   </Head>
 )
 
