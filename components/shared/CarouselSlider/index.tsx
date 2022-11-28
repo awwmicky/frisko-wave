@@ -12,6 +12,10 @@ interface IPReactMultiCarousel {
 }
 
 const screenSize = {
+	beyond: {
+		breakpoint: { max: 5000, min: 3000 },
+    items: 5,
+	},
 	monitor: {
 		breakpoint: { max: 3000, min: 1280 },
     items: 4,
@@ -31,7 +35,7 @@ const screenSize = {
 }
 
 const carouselSettings = {
-	// ssr: true, // means to render carousel on server-side,
+	ssr: true, // means to render carousel on server-side,
   responsive: screenSize,
 	swipeable: false,
   draggable: false,
