@@ -25,7 +25,7 @@ const ProductItemPage: NextPage<IPProductItem> = ({
 	<Layer className="mt-2 mb-10 flex flex-col gap-8">
 		<div className="s flex gap-4 flex-col relative lg:flex-row lg:min-h-[50vh]">
 			<PItem.ProductGallery
-				images={ productGallery.images }
+				images={ productGallery.images as Array<string> }
 				imgAlt={ productGallery.model.current }
 				className="flex-[1] max-w-lg mx-auto"
 			/>
@@ -56,8 +56,6 @@ const getStaticProps: GetStaticProps<IPProductItem, IStaticParams> = async (ctx)
   const productItem = await sanityQuery.fetch(productItemQuery, queryParams)
 		.then((result) => productItemSchema.parse(result))
 	const { productGallery, productDetail } = productItem
-
-	// logger.info(productDetail, '[detail]')
 
 	if (!modelId || !productList || !productGallery || !productDetail) return {
 		notFound: true, props: null,

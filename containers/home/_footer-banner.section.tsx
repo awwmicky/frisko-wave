@@ -5,7 +5,7 @@ import { Typography, Button } from '@material-tailwind/react'
 import type { IBanner } from '@/src/@types'
 import { PATHS_ROOT } from '@/src/routes'
 import { urlSrc } from '@/src/lib'
-
+import { formatDate } from '@/src/utils'
 
 interface IPFooterBanner {
 	product: Omit<IBanner, 'name'>
@@ -30,12 +30,14 @@ const sx = {
 const FooterBanner: FC<IPFooterBanner> = ({ product }) => (
 	<div className={`${ sx.banner }`}>
 		<div className={`${ sx.box1.wrapper }`}>
-			<Typography variant="small" color="white">{ product.salesDiscount }</Typography>
+			<Typography variant="small" color="white">{ product.sales?.discount }</Typography>
 			<Typography variant="h2" className={`${ sx.box1.text2 }`}>
 				<span className="translate-x-[-0.1ch]">{ product.lgText1 }</span>{' '}
 				<span className="translate-x-[-0.05ch]">{ product.lgText2 }</span>
 			</Typography>
-			<Typography variant="small" color="white" className={`${ sx.box1.text3 }`}>{ product.salesTime }</Typography>
+			<Typography variant="small" color="white" className={`${ sx.box1.text3 }`}>
+				{ formatDate(product.sales?.startDate as string, product.sales?.endDate as string) }
+			</Typography>
 		</div>
 
 		<img

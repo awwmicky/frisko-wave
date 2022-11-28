@@ -8,7 +8,7 @@ import { sanityQuery } from '@/src/lib'
 
 interface IPHome {
 	productList: Array<Omit<IProductDetail, 'rating' | 'description'>>
-	heroBannerData: Omit<IBanner, 'name' | 'mdText' | 'salesDiscount' | 'salesTime'>
+	heroBannerData: Omit<IBanner, 'name' | 'mdText' | 'sales'>
 	footerBannerData: Omit<IBanner, 'name'>
 }
 

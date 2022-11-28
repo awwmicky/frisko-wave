@@ -1,9 +1,8 @@
 import { FC } from 'react'
 import { GallerySlider } from '@/components/shared'
-import type { TImages } from '@/src/@types'
 
 interface IPGallerySlider {
-	images: Array<TImages>
+	images: Array<string>
 	imgAlt: string
 	className?: string
 }

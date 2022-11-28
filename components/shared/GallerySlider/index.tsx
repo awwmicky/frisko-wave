@@ -2,10 +2,9 @@
 import 'react-image-gallery/styles/css/image-gallery.css'
 import { FC } from 'react'
 import ImageGallery from 'react-image-gallery'
-import type { TImages } from '@/src/@types'
 
 interface IPGallerySlider {
-	slides: Array<TImages>
+	slides: Array<string>
 	imgAlt: string
 	className?: string
 }
