@@ -15,6 +15,7 @@ const banner = {
       title: 'Name',
       name: 'name',
       type: 'string',
+			validation: (Rule) => Rule.required(),
     },
 		{
       title: 'Model (Slug)',
@@ -62,16 +63,34 @@ const banner = {
       name: 'description',
       type: 'text',
     },
-    {
-      title: 'Sales Discount',
-      name: 'salesDiscount',
-      type: 'string',
-    },
-    {
-      title: 'Sales Time',
-      name: 'salesTime',
-      type: 'string',
-    },
+		{
+			title: 'Sales',
+			name: 'sales',
+			type: 'object',
+			fields: [
+				{
+					title: 'Discount',
+					name: 'discount',
+					type: 'string',
+				},
+				{
+					title: 'Start Date',
+					name: 'startDate',
+					type: 'date',
+					options: {
+						dateFormat: 'MMM D',
+					},
+				},
+				{
+					title: 'End Date',
+					name: 'endDate',
+					type: 'date',
+					options: {
+						dateFormat: 'MMM D',
+					},
+				},
+			],
+		},
   ],
 }
 
