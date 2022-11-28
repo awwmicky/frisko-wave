@@ -1,5 +1,6 @@
+import type { SanityImageSource } from '@sanity/image-url/lib/types/types'
 // export type TImages = string | StaticImageData | SanityImageSource
-export type TImages = string | any
+export type TImages = string | SanityImageSource
 
 export interface IBanner {
 	image: TImages
@@ -11,12 +12,16 @@ export interface IBanner {
 	lgText2: string
 	btnText: string
 	description: string
-	salesDiscount: string
-	salesTime: string
+	sales?: {
+		discount: string
+		startDate: Date | string
+		endDate: Date | string
+	} | null
 }
 
 export interface IProductDetail {
-	images: TImages | Array<TImages>
+	// images: Array<TImages> | TImages
+	images: Array<string> | Array<SanityImageSource> | SanityImageSource
 	name: string
 	model: Record<'current', string>
 	category: 'speakers' | 'headphones' | 'earphones'

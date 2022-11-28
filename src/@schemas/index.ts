@@ -27,8 +27,17 @@ const bannerModel = z.object({
 	lgText2: z.string(),
 	btnText: z.string(),
 	description: z.string(),
-	salesDiscount: z.string(),
-	salesTime: z.string(),
+	sales: z.object({
+		discount: z.string(),
+		startDate: z.union([
+			z.date(),
+			z.string(),
+		]),
+		endDate: z.union([
+			z.date(),
+			z.string(),
+		]),
+	}).nullish(),
 })
 
 const productModel = z.object({
@@ -52,8 +61,7 @@ const productModel = z.object({
 export const bannerSchema = z.object({
 	'heroBannerData': bannerModel.omit({
 		mdText: true,
-		salesDiscount: true,
-		salesTime: true,
+		sales: true,
 	}),
 	'footerBannerData': bannerModel,
 })

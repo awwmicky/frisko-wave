@@ -1,6 +1,6 @@
 export const bannerQuery = `{\
-	"heroBannerData": *[_type == "banner" && !defined(salesTime)][0],
-	"footerBannerData":	*[_type == "banner" && defined(salesTime)][0],
+	"heroBannerData": *[_type == "banner" && !defined(sales)][0],
+	"footerBannerData":	*[_type == "banner" && defined(sales)][0],
 }\
 `
 
