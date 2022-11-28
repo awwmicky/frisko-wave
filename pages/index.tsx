@@ -3,6 +3,7 @@ import { Layer } from '@/components/layout'
 import * as Home from '@/containers/home'
 import type { IBanner, IProductDetail } from '@/src/@types'
 import { bannerQuery, productQuery } from '@/src/@queries'
+import { bannerSchema, productSchema } from '@/src/@schemas'
 import { sanityQuery } from '@/src/lib'
 
 interface IPHome {
@@ -23,10 +24,11 @@ const HomePage: NextPage<IPHome> = ({
 	</Layer>
 )
 
-
 const getServerSideProps: GetServerSideProps = async () => {
-	const productList = await sanityQuery.fetch(productQuery) as Pick<IPHome, 'productList'>
-	const bannerData = await sanityQuery.fetch(bannerQuery) as Pick<IPHome, 'heroBannerData' | 'footerBannerData'>
+	const productList = await sanityQuery.fetch(productQuery)
+		.then((result) => productSchema.parse(result))
+	const bannerData = await sanityQuery.fetch(bannerQuery)
+		.then((result) => bannerSchema.parse(result))
 	const { heroBannerData, footerBannerData } = bannerData
 
 	if (!productList || !heroBannerData || !footerBannerData) return {

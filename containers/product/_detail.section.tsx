@@ -21,7 +21,7 @@ const ProductDetail: FC<IPProductDetail> = ({ item, className="" }) => {
 	const onAddToCart = useGlobalStore((state) => state.onAddToCart)
 	const { modelId } = useRouter().query
 	const isInStock = Boolean(item.qty)
-	const product = {	...item, model: { current: modelId }, } as IProductDetail
+	const product = {	...item, model: { current: modelId } } as IProductDetail
 
 	const updateCartItemQty = (qty=1, val="") => {
 		if (val === 'increment') return setCartQty((prev) => prev+1)

@@ -3,13 +3,14 @@ import type { ParsedUrlQuery } from 'querystring'
 import { Layer } from '@/components/layout'
 import * as PItem from '@/containers/product'
 import type { IProductDetail } from '@/src/@types'
-import { productModelQuery, productItemQuery, productQuery } from '@/src/@queries'
+import { productModelQuery, productQuery, productItemQuery } from '@/src/@queries'
+import { productModelSchema, productSchema, productItemSchema } from '@/src/@schemas'
 import { sanityQuery } from '@/src/lib'
 
 interface IPProductItem {
 	productList: Array<Omit<IProductDetail, 'rating' | 'description'>>
-	productDetail: Omit<IProductDetail, 'model' | 'category'>
 	productGallery: Pick<IProductDetail, 'images' | 'model'>
+	productDetail: Omit<IProductDetail, 'model' | 'category'>
 }
 
 interface IStaticParams extends ParsedUrlQuery {
@@ -18,8 +19,8 @@ interface IStaticParams extends ParsedUrlQuery {
 
 const ProductItemPage: NextPage<IPProductItem> = ({
 	productList,
-	productDetail,
-	productGallery
+	productGallery,
+	productDetail
 }) => (
 	<Layer className="mt-2 mb-10 flex flex-col gap-8">
 		<div className="s flex gap-4 flex-col relative lg:flex-row lg:min-h-[50vh]">
@@ -39,7 +40,8 @@ const ProductItemPage: NextPage<IPProductItem> = ({
 
 
 const getStaticPaths: GetStaticPaths = async () => {
-  const productList = await sanityQuery.fetch(productModelQuery) as Array<Pick<IProductDetail, 'model'>>
+  const productList = await sanityQuery.fetch(productModelQuery)
+		.then((result) => productModelSchema.parse(result))
   const paths = productList.map((item) => ({ params: { modelId: item.model.current }}))
 
   return { paths, fallback: 'blocking', }
@@ -49,27 +51,22 @@ const getStaticProps: GetStaticProps<IPProductItem, IStaticParams> = async (ctx)
 	const { modelId } = ctx.params!
 	const queryParams = { modelId }
 
-	const productList = await sanityQuery.fetch(
-		productQuery
-	) as Array<Omit<IProductDetail, 'rating' | 'description'>>
+	const productList = await sanityQuery.fetch(productQuery)
+		.then((result) => productSchema.parse(result))
+  const productItem = await sanityQuery.fetch(productItemQuery, queryParams)
+		.then((result) => productItemSchema.parse(result))
+	const { productGallery, productDetail } = productItem
 
-  const productItem = await sanityQuery.fetch(
-		productItemQuery, queryParams
-	) as Pick<IPProductItem, 'productDetail' | 'productGallery'>
-	const { productDetail, productGallery } = productItem
+	// logger.info(productDetail, '[detail]')
 
-	if (!modelId || !productList || !productDetail || !productGallery) return {
+	if (!modelId || !productList || !productGallery || !productDetail) return {
 		notFound: true, props: null,
 	}
 
   return {
-    props: { productList,	productDetail, productGallery },
+    props: { productList,	productGallery, productDetail },
   }
 }
-
-// as Array<IProductDetail>
-// as Pick<IPProductItem, 'productList'>
-// as Array<Omit<IProductDetail, 'rating' | 'description'>>
 
 export default ProductItemPage
 export { getStaticPaths, getStaticProps }

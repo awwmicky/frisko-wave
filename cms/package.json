@@ -6,7 +6,8 @@
   "main": "package.json",
   "scripts": {
     "start": "sanity start",
-    "build": "sanity build"
+    "build": "sanity build",
+    "deploy": "sanity deploy"
   },
   "dependencies": {
     "@sanity/base": "^2.35.2",

@@ -20,7 +20,7 @@ export interface IProductDetail {
 	name: string
 	model: Record<'current', string>
 	category: 'speakers' | 'headphones' | 'earphones'
-	rating: Record<'totalStars' | 'totalReviews', number>
+	rating?: Record<'totalStars' | 'totalReviews', number> | null
 	description: string
 	price: number
 	qty: number

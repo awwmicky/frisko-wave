@@ -1,15 +1,19 @@
-// import pino from 'pino'
+import pino from 'pino'
 
-// export const logger = pino({
-//   level: 'debug',
-//   transport: {
-//     target: 'pino-pretty',
-//     options: {
-//       colorize: true,
-//       translateTime: "SYS:dd-mm-yyyy HH:MM:ss",
-//       ignore: "pid,hostname",
-//     },
-//   },
-// })
+const isProd = process.env.NODE_ENV === 'production'
 
-export const logger: Console = console
+export const logger = (isProd)
+	? console
+	: pino({
+		level: 'debug',
+		transport: {
+			target: 'pino-pretty',
+			options: {
+				colorize: true,
+				translateTime: "SYS:dd-mm-yyyy HH:MM:ss",
+				ignore: "pid,hostname",
+			},
+		},
+	})
+
+// export const logger: Console = console

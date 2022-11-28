@@ -5,6 +5,7 @@ import { Layer } from '@/components/layout'
 import { ProductItemCard } from '@/containers'
 import type { IProductDetail } from '@/src/@types'
 import { productQuery } from '@/src/@queries'
+import { productSchema } from '@/src/@schemas'
 import { sanityQuery } from '@/src/lib'
 
 interface IPProduct {
@@ -32,7 +33,8 @@ const ProductPage: NextPage<IPProduct> = ({ productList }) => {
 
 
 const getServerSideProps: GetServerSideProps = async () => {
-	const productList = await sanityQuery.fetch(productQuery) as Pick<IPProduct, 'productList'>
+	const productList = await sanityQuery.fetch(productQuery)
+		.then((result) => productSchema.parse(result))
 
 	if (!productList) return {
 		notFound: true, props: null,

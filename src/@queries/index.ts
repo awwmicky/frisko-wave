@@ -13,7 +13,7 @@ export const productQuery = `\
 		current,
 	},
 	price,
-	qty,
+	qty
 }\
 `
 
@@ -32,7 +32,7 @@ export const productItemQuery = `{\
 		rating,
 		description,
 		price,
-		qty,
+		qty
 	}[0],
 	"productGallery": *[_type == "product" &&	model.current == $modelId] {
 		"images": images[].asset -> url,
