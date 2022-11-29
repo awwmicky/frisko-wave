@@ -1,9 +1,7 @@
-// import type { StateCreator } from 'zustand'
-// import { devtools, persist, PersistOptions } from 'zustand/middleware'
 import { toast } from 'react-hot-toast'
+import * as local from 'idb-keyval'
 import type { ICartDetail, IProductDetail } from '@/src/@types'
 import type { TStore } from './'
-import * as local from 'idb-keyval'
 
 interface ICartState {
 	cartList: Array<ICartDetail>
@@ -41,8 +39,7 @@ const createCartStore: TStore<TCartStore> = (set) => ({
 
 	emptyCart: async () => {
 		await local.del('GLOBAL_STORE')
-    console.debug('[local]', await local.get('GLOBAL_STORE'))
-		set((prev) => ({ ...prev, ...initialState }), false, 'empty_cart')
+		set(initialState, false, 'empty_cart')
 	},
 
 	onAddToCart: (product, qty=1) => set((prev) => {

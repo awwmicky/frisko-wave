@@ -79,7 +79,6 @@ const customTheme = {
 	container: {
 		padding: {
 			DEFAULT: '1.25em',
-			'2xl': '0',
 		},
 	},
 	extend: { },

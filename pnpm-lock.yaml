@@ -1,7 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@iconify/react': ^4.0.0
+  '@iconify/react': ^4.0.1
   '@material-tailwind/react': ^1.2.4
   '@sanity/cli': ^2.35.0
   '@sanity/client': ^3.4.1
@@ -28,7 +28,7 @@ specifiers:
   react: ^18.2.0
   react-dom: ^18.2.0
   react-hot-toast: ^2.4.0
-  react-icons: ^4.6.0
+  react-icons: ^4.7.1
   react-image-gallery: ^1.2.11
   react-loading-icons: ^1.1.0
   react-multi-carousel: ^2.8.2
@@ -55,7 +55,7 @@ dependencies:
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-hot-toast: 2.4.0_owo25xnefcwdq3zjgtohz6dbju
-  react-icons: 4.6.0_react@18.2.0
+  react-icons: 4.7.1_react@18.2.0
   react-image-gallery: 1.2.11_react@18.2.0
   react-loading-icons: 1.1.0
   react-multi-carousel: 2.8.2
@@ -64,7 +64,7 @@ dependencies:
   zustand: 4.1.4_react@18.2.0
 
 devDependencies:
-  '@iconify/react': 4.0.0_react@18.2.0
+  '@iconify/react': 4.0.1_react@18.2.0
   '@sanity/cli': 2.35.0
   '@types/canvas-confetti': 1.6.0
   '@types/node': 18.11.9
@@ -343,8 +343,8 @@ packages:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
     dev: true
 
-  /@iconify/react/4.0.0_react@18.2.0:
-    resolution: {integrity: sha512-YE+z5PCegYyuJtLR6KBbJNlssmuVgRyFyRxcgxSPVkN3Gsm7npSzrUh+gWlBxrNb5g4Q6Nnb1gczPBNcwtUpng==}
+  /@iconify/react/4.0.1_react@18.2.0:
+    resolution: {integrity: sha512-/DBJqh5K7W4f+d4kpvyJa/OTpVa3GfgrE9bZFAKP0vIWDr0cvVU9MVvbbkek216w9nLQhpJY/FeJtc6izB1PHw==}
     peerDependencies:
       react: '>=16'
     dependencies:
@@ -3346,8 +3346,8 @@ packages:
       - csstype
     dev: false
 
-  /react-icons/4.6.0_react@18.2.0:
-    resolution: {integrity: sha512-rR/L9m9340yO8yv1QT1QurxWQvWpbNHqVX0fzMln2HEb9TEIrQRGsqiNFQfiv9/JEUbyHmHPlNTB2LWm2Ttz0g==}
+  /react-icons/4.7.1_react@18.2.0:
+    resolution: {integrity: sha512-yHd3oKGMgm7zxo3EA7H2n7vxSoiGmHk5t6Ou4bXsfcgWyhfDKMpyKfhHR6Bjnn63c+YXBLBPUql9H4wPJM6sXw==}
     peerDependencies:
       react: '*'
     dependencies:
