@@ -74,6 +74,14 @@ const checkoutParams = (req: IExtNextApiRequest): Stripe.Checkout.SessionCreateP
 		},
 		quantity: item.cartQty,
 	})),
+	custom_text: {
+		submit: {
+			message: `\
+			This is a payment test-mode. Use this temporary info to fill out fields ::\
+			# 4242 4242 4242 4242	# 1234 # 567 # name # 12345\n
+			`
+		},
+	},
 	success_url: `${req.headers.origin}/checkout?status=success`,
 	cancel_url: `${req.headers.origin}/checkout?status=cancelled`,
 })

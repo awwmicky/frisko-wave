@@ -14,13 +14,13 @@ interface IPCheckout {
 }
 
 const CheckoutPage: NextPage<IPCheckout> = ({ status }) => {
-	const resetCart = useGlobalStore((state) => state.resetCart)
+	const emptyCart = useGlobalStore((state) => state.emptyCart)
 
 	useEffect(() => {
 		if (status !== 'success') return
 		runFireworks()
-		resetCart()
-	}, [ status, resetCart ])
+		emptyCart()
+	}, [ status, emptyCart ])
 
 	return (
 		<Layer className="h-full text-center my-10 flex flex-col place-content-center">
