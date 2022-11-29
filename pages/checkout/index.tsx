@@ -8,6 +8,7 @@ import { checkoutContent } from '@/src/constants'
 import { PATHS_ROOT } from '@/src/routes'
 import { useGlobalStore } from '@/src/store'
 import { runFireworks } from '@/src/utils'
+import * as local from 'idb-keyval'
 
 interface IPCheckout {
 	status: "success" | "cancelled"
@@ -19,6 +20,7 @@ const CheckoutPage: NextPage<IPCheckout> = ({ status }) => {
 	useEffect(() => {
 		if (status !== 'success') return
 		runFireworks()
+		local.del('GLOBAL_STORE')
 		emptyCart()
 	}, [ status, emptyCart ])
 
