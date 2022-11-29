@@ -50,6 +50,7 @@ const getStaticPaths: GetStaticPaths = async () => {
 const getStaticProps: GetStaticProps<IPProductItem, IStaticParams> = async (ctx) => {
 	const { modelId } = ctx.params!
 	const queryParams = { modelId }
+	const time_24_hr = 86400
 
 	const productList = await sanityQuery.fetch(productQuery)
 		.then((result) => productSchema.parse(result))
@@ -63,6 +64,7 @@ const getStaticProps: GetStaticProps<IPProductItem, IStaticParams> = async (ctx)
 
   return {
     props: { productList,	productGallery, productDetail },
+		revalidate: time_24_hr,
   }
 }
 

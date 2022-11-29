@@ -20,3 +20,8 @@ export default function App ({ Component, pageProps }: AppProps) {
     </>
   )
 }
+
+/*
+getServerSideProps :: generate on server-time
+getStaticProps :: create page on build-time
+*/
