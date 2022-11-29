@@ -5,15 +5,15 @@
   "license": "UNLICENSED",
   "scripts": {
     "dev": "next",
-    "dev:cms": "cd ./cms && yarn start",
+    "dev:cms": "cd ./studio && yarn start",
     "dev:both": "concurrently -k -n \"API,UI\" -c \"yellow,cyan\" npm:\"dev:cms\" npm:\"dev\"",
     "build": "next build",
-    "deploy:cms": "cd ./cms && yarn deploy",
+    "deploy:cms": "cd ./studio && yarn deploy",
     "start": "next start",
     "delete": "./bin/delete.sh",
     "unbuild": "rm -rf ./dist ./.next",
     "reset-all": "yarn unbuild && yarn delete",
-    "update-all": "pnpm install && cd ./cms && yarn install"
+    "update-all": "pnpm install && cd ./studio && yarn install"
   },
   "dependencies": {
     "@material-tailwind/react": "^1.2.4",
@@ -22,6 +22,7 @@
     "@stripe/stripe-js": "^1.44.1",
     "canvas-confetti": "^1.6.0",
     "http-status-codes": "^2.2.0",
+    "idb-keyval": "^6.2.0",
     "ky": "^0.32.2",
     "next": "^13.0.5",
     "next-sanity-image": "^5.0.0",
