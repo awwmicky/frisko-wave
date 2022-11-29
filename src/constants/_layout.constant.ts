@@ -1,7 +1,7 @@
 import { InfoIcon, TechIcon } from '@/components/blocks'
 
 export const headerContent = {
-	brand_name: 'Frisco Wave',
+	brand_name: 'Frisko Wave',
 }
 
 export const footerContent = {

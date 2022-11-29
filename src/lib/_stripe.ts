@@ -15,6 +15,7 @@ export const createStripeCheckout = async (cartList: Array<ICartDetail> = []) =>
 	const [ URI_STRIPE, URI_OPTIONS ] = ['/api/stripe', { json: { cartList }}]
 
 	try {
+		toast.loading('One moment...')
 		const stripe = await getStripe()
 		const result = await ky.post(URI_STRIPE, URI_OPTIONS).json() as Stripe.Checkout.Session
 		toast.loading('Redirecting...')
