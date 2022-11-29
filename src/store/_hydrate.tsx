@@ -7,7 +7,8 @@ const ZustandHydrate: FC<IPZustandHydrate> = ({ children }) => {
 	const [ hydrated, setHydrated ] = useState(useGlobalStore.persist.hasHydrated())
 
   useEffect(() => {
-		// if (hydrated) return
+		if (hydrated) return
+
 		const unsubHydrate = useGlobalStore.persist.onHydrate(() => setHydrated(false))
     const unsubFinishHydration = useGlobalStore.persist.onFinishHydration(() => setHydrated(true))
     setHydrated(useGlobalStore.persist.hasHydrated())
@@ -16,8 +17,7 @@ const ZustandHydrate: FC<IPZustandHydrate> = ({ children }) => {
       unsubHydrate()
       unsubFinishHydration()
     }
-  }, [ ])
-	// }, [ hydrated ])
+	}, [ hydrated ])
 
 	if (!hydrated) return null
 	return <>{ children }</>
