@@ -3,6 +3,7 @@
 import { toast } from 'react-hot-toast'
 import type { ICartDetail, IProductDetail } from '@/src/@types'
 import type { TStore } from './'
+import * as local from 'idb-keyval'
 
 interface ICartState {
 	cartList: Array<ICartDetail>
@@ -37,7 +38,12 @@ const createCartStore: TStore<TCartStore> = (set) => ({
 	toggleCart: () => set((prev) => ({ ...prev, isCartOpen: !prev.isCartOpen }), false, 'toggle_cart'),
 	showCart: () => set((prev) => ({ ...prev, isCartOpen: true }), false, 'show_cart'),
 	hideCart: () => set((prev) => ({ ...prev, isCartOpen: false }), false, 'hide_cart'),
-	emptyCart: () => set((prev) => ({ ...prev, ...initialState }), false, 'empty_cart'),
+
+	emptyCart: async () => {
+		await local.del('GLOBAL_STORE')
+    console.debug('[local]', await local.get('GLOBAL_STORE'))
+		set((prev) => ({ ...prev, ...initialState }), false, 'empty_cart')
+	},
 
 	onAddToCart: (product, qty=1) => set((prev) => {
 		const cartId = prev.cartList.findIndex((item) => (item.model.current === product.model.current))
