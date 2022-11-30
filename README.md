@@ -35,7 +35,17 @@ href="https://api.github.com/repos/awwmicky/frisko-wave"
 </div>
 
 <div>
+
+```
+TL;DR
+
+what is it?    :: an ecommerce app using headless cms
+why use it?    :: to build data-driven content solution
+who is it for? :: developers & editors that want a real-time structured content process
+```
+
 <hr />
+
 
 <div align="center">
 	<img
@@ -45,14 +55,6 @@ href="https://api.github.com/repos/awwmicky/frisko-wave"
 	src="./public/thumbnail.png"
 	/>
 </div>
-
-```
-TL;DR
-
-what is it?    :: an ecommerce app using headless cms
-why use it?    :: to build data-driven content solution
-who is it for? :: developers & editors that want a real-time structured content process
-```
 
 ## Project Scope
 
