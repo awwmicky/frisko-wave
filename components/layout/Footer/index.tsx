@@ -11,7 +11,7 @@ const Footer = () => (
 					<Typography variant="paragraph" className="text-center sm:text-right font-bold">
 						{ footerContent.text.moreInfo }
 					</Typography>
-					<div className="flex gap-2 place-content-center sm:place-content-end">
+					<div className="flex gap-4 place-content-center sm:place-content-end">
 						{ Children.toArray(footerContent.moreInfo.map((item) => (
 							<a
 								title={ item.title }
@@ -29,7 +29,7 @@ const Footer = () => (
 					<Typography variant="paragraph" className="text-center sm:text-left font-bold">
 						{ footerContent.text.techUsed }
 					</Typography>
-					<div className="flex gap-2 place-items-center place-content-center sm:place-content-start">
+					<div className="flex gap-4 place-items-center place-content-center sm:place-content-start">
 						{ Children.toArray(footerContent.technologies.map((item) => (
 							<a
 								title={ item.title }
@@ -44,8 +44,10 @@ const Footer = () => (
 				</div>
 			</div>
 
-			<Typography variant="small">
-				<code className="block text-center">{ footerContent.text.madeBy }</code>
+			<Typography variant="small" className="flex place-content-center">
+				<code className="block text-center bg-red-200 p-1 rounded-md">
+					{ footerContent.text.madeBy }
+				</code>
 			</Typography>
     </Layer>
   </footer>

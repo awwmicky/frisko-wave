@@ -4,7 +4,7 @@ import { useGlobalStore } from './'
 interface IPZustandHydrate extends PropsWithChildren { }
 
 const ZustandHydrate: FC<IPZustandHydrate> = ({ children }) => {
-	const [ hydrated, setHydrated ] = useState(useGlobalStore.persist.hasHydrated())
+	const [ hydrated, setHydrated ] = useState(false)
 
   useEffect(() => {
 		if (hydrated) return
