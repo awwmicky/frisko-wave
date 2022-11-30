@@ -12,7 +12,7 @@ export const footerContent = {
 	},
 	moreInfo: [
 		{ title: 'Portfolio', icon: InfoIcon.Portfolio, link: 'https://aww-micky.web.app/' },
-		{ title: 'Codebase', icon: InfoIcon.Codebase, link: 'https://github.com/awwmicky/frisco-wave' },
+		{ title: 'Codebase', icon: InfoIcon.Codebase, link: 'https://github.com/awwmicky/frisko-wave' },
 	],
 	technologies: [
 		{ title: 'Next.js', icon: TechIcon.NextJs, link: 'https://nextjs.org/' },
