@@ -1,6 +1,5 @@
-# Frisco Wave - E-Commerce App
-
 <div align="center">
+	<h1>Frisco Wave - E-Commerce App</h1>
 	<img alt="logo" width="150" src="./public/favicon.png" />
 	<h2><code>Conceptual Project</code></h2>
 </div>
@@ -37,10 +36,10 @@ href="https://api.github.com/repos/awwmicky/frisko-wave"
 <div>
 
 ```
-TL;DR
+𝚃𝙻;𝙳𝚁
 
-what is it?    :: an ecommerce app using headless cms
-why use it?    :: to build data-driven content solution
+what is it?    :: a headless cms app
+why use it?    :: to build data-driven content solutions
 who is it for? :: developers & editors that want a real-time structured content process
 ```
 
@@ -56,7 +55,7 @@ who is it for? :: developers & editors that want a real-time structured content 
 	/>
 </div>
 
-## Project Scope
+## Project Brief
 
 Mid-Size Project
 
@@ -92,7 +91,7 @@ Timeframe : ~2 weeks
 <img alt="Material-Tailwind" src="https://img.shields.io/badge/Material--Tailwind-1E88E5?logoColor=FFF&style=for-the-badge&logo=addthis" />
 </a>
 <a target="_blank" href="https://zustand-demo.pmnd.rs/">
-<img alt="Zustand" src="https://img.shields.io/badge/Zustand-716257?logoColor=FFF&style=for-the-badge&logo=addthis" />
+<img alt="Zustand" src="https://img.shields.io/badge/Zustand-443E38?logoColor=FFF&style=for-the-badge&logo=addthis" />
 </a>
 <a target="_blank" href="https://sanity.io/">
 <img alt="Sanity" src="https://img.shields.io/badge/Sanity-F03E2F?logoColor=FFF&style=for-the-badge&logo=addthis" />
