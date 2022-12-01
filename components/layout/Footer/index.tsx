@@ -45,7 +45,7 @@ const Footer = () => (
 			</div>
 
 			<Typography variant="small" className="flex place-content-center">
-				<code className="block text-center bg-red-200 p-1 rounded-md">
+				<code className="block text-center bg-red-200/50 p-1 rounded-md">
 					{ footerContent.text.madeBy }
 				</code>
 			</Typography>

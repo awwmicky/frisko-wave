@@ -29,7 +29,7 @@ const sx = {
 		price: 'text-right font-bold',
 	},
 	footer: {
-		wrapper: 'py-2 flex place-content-between',
+		wrapper: 'py-2 flex gap-2 place-content-between',
 	},
 }
 
@@ -55,7 +55,7 @@ const ProductItemCard: FC<IPProductItemCard> = ({ item, className="" }) => {
 					<Typography variant="paragraph" className={`${ sx.body.price }`}>${ item.price }</Typography>
 				</CardBody>
 
-				<CardFooter divider className="py-2 flex place-content-between">
+				<CardFooter divider className={ sx.footer.wrapper }>
 					{ (!isInStock) ? (
 						<Typography variant="paragraph" className="text-red-500">Out of Stock</Typography>
 					) : (

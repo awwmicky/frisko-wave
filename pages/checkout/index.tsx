@@ -13,7 +13,7 @@ interface IPCheckout {
 	status: "success" | "cancelled"
 }
 
-const CheckoutPage: NextPage<IPCheckout> = ({ status }) => {
+const CheckoutPage: NextPage<IPCheckout> = ({ status='cancelled' }) => {
 	const emptyCart = useGlobalStore((state) => state.emptyCart)
 
 	useEffect(() => {
