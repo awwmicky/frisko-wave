@@ -7,7 +7,7 @@ interface IPMeta {
 
 const content = {
 	// title: '𝚆𝚎𝚋 𝙰𝚙𝚙 | 🐜',
-	title: 'Frisko Wave eCommerce | App',
+	title: 'Frisko Wave | eCommerce App',
 	description: `Be an audio head, find the product that best fits the way you music needs. You'll rock until the beat drops.`,
 	keywords: 'next.js, typescript, react, tailwindcss, zustand, sanity, stripe',
 	// url_name: 'http://localhost:3000/',
