@@ -11,8 +11,8 @@ const content = {
 	description: `Be an audio head, find the product that best fits the way you music needs. You'll rock until the beat drops.`,
 	keywords: 'next.js, typescript, react, tailwindcss, zustand, sanity, stripe',
 	// url_name: 'http://localhost:3000/',
-	url_name: 'https://frisko-wave-app.vercel.app/',
-	url_domain: '',
+	url_name: 'https://frisko-wave--web.vercel.app/',
+	url_domain: 'frisko-wave--web',
 	img_thumbnail: '',
 	img_thumbnail_alt: '🖼',
 	img_favion: '',
@@ -35,9 +35,11 @@ const Meta = ({
     <meta property="og:description" content={ description } />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={ content.url_name } />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="627" />
+    <meta property="og:url" content={ content.url_domain } />
     <meta property="og:image" content="/thumbnail.png" />
+		<meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="628" />
+		<meta name="twitter:card" content="summary_large_image" />
     {/*  */}
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" type="image/png" href="/favicon.png" />

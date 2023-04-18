@@ -8,10 +8,10 @@
 <a
 target="_blank"
 title="Open web app 🔗"
-href="https://frisko-wave-app.vercel.app/"
+href="https://frisko-wave--web.vercel.app/"
 ><img
 	alt="web-app-build-status"
-	src="https://img.shields.io/website-live-issue-sucess-important/https/frisko-wave-app.vercel.app/"
+	src="https://img.shields.io/website-live-issue-sucess-important/https/frisko-wave--web.vercel.app/"
 	/>
 </a>
 <a
