@@ -35,7 +35,7 @@ const Meta = ({
     <meta property="og:description" content={ description } />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={ content.url_name } />
-    <meta property="og:url" content={ content.url_domain } />
+    <meta property="og:site_name" content={ content.url_domain } />
     <meta property="og:image" content="/thumbnail.png" />
 		<meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="628" />
